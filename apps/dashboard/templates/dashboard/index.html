@@ -1,0 +1,33 @@
+{% extends 'dashboard/base.html' %}
+{% block pagetitle %}User Dashboard{% endblock %}
+  {% block main %}
+    <h3>Manage Users</h3>
+    <table class="table table-striped">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Created At</th>
+        <th>User Level</th>
+        {% if request.session.user_level == 9 %}
+          <th>Actions</th>
+        {% endif %}
+      </tr>
+      {% for user in users %}
+        <tr>
+          <td>{{user.id}}</td>
+          <td><a href="{% url 'db:show' id=user.id %}">{{user.name}}</a></td>
+          <td>{{user.email}}</td>
+          <td>{{user.created_at|date:'M d, Y'}}</td>
+          <td>{{user.user_level}}</td>
+          {% if request.session.user_level == 9 %}
+          <td><a href="{% url 'db:edit' id=user.id %}">edit</a>&nbsp;&nbsp;&nbsp;
+              <a href="{% url 'db:deleteUser' id=user.id %}" class="confirm-delete" data-object-name="{{user.name}}" data-object-id="{{user.id}}">remove</a></td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </table>
+    {% if request.session.user_level == 9 %}
+    <a href="{% url 'db:addUser' %}" class="btn btn-primary">Add New</a>
+    {% endif %}
+  {% endblock %}

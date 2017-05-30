@@ -1,0 +1,45 @@
+.left, .right {
+    text-align: left;
+    display: inline-block;
+    width: 45%;
+    margin: 1%;
+    vertical-align: top;
+  }
+  .main_content {
+    width: 100%;
+    padding: 2%;
+    margin: 0;
+    text-align: center;
+  }
+  th {
+    text-align: center;
+  }
+  fieldset {
+    border: solid 1px #DDD !important;
+    padding: 0 10px 10px 20px;
+    border-bottom: none;
+  }
+  legend {
+    width: auto !important;
+    text-align: left;
+    padding: 0 5px;
+    border: none;
+    font-size: 18px;
+  }
+  .errors {
+    color: red;
+  }
+  .messages {
+    color: green;
+  }
+  .userMessages {
+    width: 50%;
+    margin: auto;
+    text-align: left;
+  }
+  .comments {
+    margin-left: 10%;
+  }
+  textarea {
+    width: 100%;
+  }

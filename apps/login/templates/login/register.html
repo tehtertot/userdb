@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style media="screen">
+      body {width: 100%;}
+      .main {margin: auto; width: 30%; padding: 5%; }
+      .errors {color: red;}
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <legend>Register</legend>
+      {% if messages %}
+      <div class="errors">
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <form class="" action="/register" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>Email: <input type="email" name="email" class="form-control"></label>
+        </div>
+        <div class="form-group">
+          <label>First Name: <input type="text" name="first_name" class="form-control"></label>
+        </div>
+        <div class="form-group">
+          <label>Last Name: <input type="text" name="last_name" class="form-control"></label>
+        </div>
+        <div class="form-group">
+          <label>Password: <input type="password" name="password" class="form-control"></label>
+        </div>
+        <div class="form-group">
+          <label>Confirm Password: <input type="password" name="confirm" class="form-control"></label>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Register">
+      </form>
+      <br>
+      <p><a href="{% url 'login:login' %}">Already have an account? Sign in</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style media="screen">
+      * { box-sizing: border-box; }
+      body {width: 100%; padding: 1%; }
+      .hero-unit {background: lightgrey; width: 100%; padding: 2%; border: 1px solid grey; }
+      .nav4 {width: 33%; display: inline-block; vertical-align: top; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Test App</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'login:login' %}">Sign In</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="hero-unit">
+      <h1>Welcome to the Test</h1>
+      <p>We're going to build a cool application using an MVC framework!</p>
+      <p><a class="btn btn-primary btn-large" href="/">Start</a></p>
+    </div>
+    <div class="nav4">
+      <h3>Manage Users</h3>
+      <p>Using this application, you'll learn how to add, remove, and edit users for the application.</p>
+    </div>
+    <div class="nav4">
+      <h3>Leave messages</h3>
+      <p>Users will be able to leave a message to another user using this application.</p>
+    </div>
+    <div class="nav4">
+      <h3>Edit User Information</h3>
+      <p>Admins will be able to edit another user's information (email address, first name, last name, etc.).</p>
+    </div>
+  </body>
+</html>

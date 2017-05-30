@@ -1,0 +1,41 @@
+{% extends 'dashboard/base.html' %}
+{% block pagetitle %}User Information{% endblock %}
+{% block main1 %}
+  <h2>{{user.name}}</h2>
+  <h5>Registered Since: {{user.created_at|date:'M d, Y'}}</h5>
+  <h5>User ID: {{user.id}}</h5>
+  <h5>Email Address: {{user.email}}</h5>
+  <h5>Description: {{user.description}}</h5>
+{% endblock %}
+{% block main2 %}
+  <h4>Leave a message for {{user.first_name}}</h4>
+  <form class="" action="{% url 'db:addMessage' id=user.id %}" method="post">
+    {% csrf_token %}
+    <textarea name="message" rows="4"></textarea>
+    <br>
+    <input type="submit" class="btn btn-primary pull-right" value="Post">
+  </form>
+{% endblock %}
+{% block mainbottom %}
+<hr>
+<div class="userMessages">
+  {% for message in user.messages_for.all %}
+  <p><b><a href="{% url 'db:show' id=message.author.id %}">{{message.author.name}}</a> wrote </b> <i>({{message.created_at|timesince}} ago)</i>:</p>
+  <p></p>
+  <p>{{message.message}}</p>
+  <div class="comments">
+    {% for comment in message.comments.all %}
+    <p><b><a href="{% url 'db:show' id=comment.author.id %}">{{comment.author.name}}</a> wrote </b> <i>({{comment.created_at|timesince}} ago)</i>:</p>
+    <p>{{comment.comment}}</p>
+    {% endfor %}
+    <form class="" action="{% url 'db:addComment' id=message.id %}" method="post">
+      {% csrf_token %}
+      <textarea name="comment" rows="2"></textarea>
+      <br>
+      <input type="submit" class="btn btn-primary pull-right" value="Reply">
+    </form>
+    <br>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
